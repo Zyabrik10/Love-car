@@ -3,9 +3,7 @@ import { useDispatch } from 'react-redux';
 import { filterCars } from 'redux/cars/cars-actions';
 
 import css from './Form.module.css';
-import InputSublist from './components/InputSubist/InputSubist';
 
-import arrowUp from 'img/svg/arrow-up.svg';
 
 export default function Form() {
   const [carBrand, setCarBrand] = useState('');
@@ -84,9 +82,9 @@ export default function Form() {
           id="carBrand"
           placeholder="Enter the text"
         />
-
+{/* 
         <img src={arrowUp} alt="" />
-        <InputSublist list={carsBrands} setValue={setCarBrand} />
+        <InputSublist list={carsBrands} setValue={setCarBrand} /> */}
       </label>
       <label htmlFor="price" className={css['input-box']}>
         <span>Price</span>
