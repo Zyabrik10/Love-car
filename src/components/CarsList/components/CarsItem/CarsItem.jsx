@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import css from './CarsItem.module.css';
 import { openModal } from 'redux/modal/modal-actions';
@@ -8,16 +8,20 @@ import PropTypes from 'prop-types';
 
 import loveSvg from 'img/svg/love.svg';
 import loveActiveSvg from 'img/svg/love_active.svg';
-import { toggleFavorite } from 'redux/cars/cars-reducer';
+import { toggleFavorite } from 'redux/cars/cars-actions';
+import { useEffect, useState } from 'react';
+import { selectCars } from 'redux/cars/cars-selector';
 
 export default function CarsItem({ obj }) {
+
+  const { favorites } = useSelector(selectCars);
+
   const {
     img,
     model,
     year,
     rentalPrice,
     id,
-    isFav,
     address,
     rentalCompany,
     type,
@@ -26,21 +30,29 @@ export default function CarsItem({ obj }) {
   } = obj;
 
   const dispatch = useDispatch();
-
-  const toggleFavoriteHandler = ({ currentTarget }) => {
+  const [isFav, setIsFav] = useState(false);
+  
+  const toggleFavoriteHandler = async ({ currentTarget }) => {
 
     const isFav = currentTarget.getAttribute('data-fav') === 'true';
     const id = currentTarget.getAttribute('data-id');
-
+    
     dispatch(toggleFavorite({ id, isFav: isFav }));
+    setIsFav(!isFav);
   };
 
-  const addr = address.split(', ');
+
+  const addr = address ? address.split(', ') : ["", ""];
 
   const openInfoHandler = async ({ target }) => {
     const id = target.getAttribute("data-id");
     dispatch(openModal(id));
   }
+
+  useEffect(() => {
+    setIsFav(favorites.some(({ carId }) => carId === String(id)));
+    // console.log(favorites);
+  }, [favorites, id]);
 
   return (
     <li className={css['container']} key={nanoid()}>
@@ -54,7 +66,6 @@ export default function CarsItem({ obj }) {
           data-fav={isFav}
         >
           <img src={isFav ? loveActiveSvg : loveSvg} alt="" />
-          
         </button>
       </div>
       <div className={css['description-box']}>

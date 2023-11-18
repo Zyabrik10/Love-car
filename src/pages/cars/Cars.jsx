@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCars } from 'redux/cars/cars-selector';
-import { addCars, getCars } from 'redux/cars/cars-actions';
+import { addCars, getCars, getFavorites } from 'redux/cars/cars-actions';
 
 import { useEffect, useState } from 'react';
 
@@ -12,9 +12,41 @@ import CarsList from 'components/CarsList/CarsList';
 import css from './Cars.module.css';
 import Modal from 'components/Modal/Modal';
 
+// export default function Cars() {
+//   const dispatch = useDispatch();
+//   const { cars, isButtonShown, favorites } = useSelector(selectCars);
+//   const [page, setPage] = useState(1);
+
+//   const buttonHandler = () => {
+//     dispatch(addCars({ page: page + 1 }));
+//     setPage(page + 1);
+//   };
+
+//   useEffect(() => {
+//     if (cars.length === 0) {
+//       dispatch(getCars());
+//       dispatch(getFavorites());
+//     }
+//   }, [dispatch, cars.length]);
+
+  
+
+//   return (
+//     <>
+//       <Modal />
+//       <section className={globalCss.section}>
+//         <div className={`${globalCss.container} ${css.container}`}>
+//           <Filter />
+//           <CarsList cars={cars} favorites={favorites} />
+//           {isButtonShown ? <button className={css["load-more"]} onClick={buttonHandler}>Load more</button> : null}
+//         </div>
+//       </section>
+//     </>
+//   );
+// }
 export default function Cars() {
   const dispatch = useDispatch();
-  const { cars, isButtonShown } = useSelector(selectCars);
+  const { cars, isButtonShown, favorites } = useSelector(selectCars);
   const [page, setPage] = useState(1);
 
   const buttonHandler = () => {
@@ -23,8 +55,10 @@ export default function Cars() {
   };
 
   useEffect(() => {
-    if (cars.length === 0) dispatch(getCars());
-  }, [dispatch, cars.length]);
+    console.log("jj");
+      dispatch(getCars());
+      dispatch(getFavorites());
+  }, [dispatch]);
 
   
 
@@ -33,8 +67,8 @@ export default function Cars() {
       <Modal />
       <section className={globalCss.section}>
         <div className={`${globalCss.container} ${css.container}`}>
-          <Filter />
-          <CarsList cars={cars}/>
+          {/* <Filter /> */}
+          <CarsList cars={cars} favorites={favorites} />
           {isButtonShown ? <button className={css["load-more"]} onClick={buttonHandler}>Load more</button> : null}
         </div>
       </section>
