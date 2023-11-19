@@ -37,9 +37,6 @@ information about each car, and contact the rental company.
   - Open a modal window to display detailed information about each car.
   - Modal can be closed by clicking the close button, backdrop, or pressing Esc.
 
-- **Filtering:**
-  - Filter cars by make using a dropdown menu.
-
 ## Technical Specifications
 
 - **Frontend:**
