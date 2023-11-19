@@ -30,14 +30,18 @@ export default function Modal() {
     rentalConditions,
   } = car;
 
+  const strMileage = String(mileage);
 
-  const closeOnKeyClick = useCallback(({ key }) => {
-    console.log('hell');
-    if (key === 'Escape') {
-      dispatch(closeModal());
-      window.removeEventListener('keydown', closeOnKeyClick);
-    }
-  }, [dispatch]);
+  const closeOnKeyClick = useCallback(
+    ({ key }) => {
+      console.log('hell');
+      if (key === 'Escape') {
+        dispatch(closeModal());
+        window.removeEventListener('keydown', closeOnKeyClick);
+      }
+    },
+    [dispatch]
+  );
 
   const closeOnButtonClick = () => {
     dispatch(closeModal());
@@ -58,7 +62,6 @@ export default function Modal() {
       window.addEventListener('keydown', closeOnKeyClick);
     }
   }, [isOpened, address, rentalConditions, closeOnKeyClick]);
-
 
   return (
     <div
@@ -131,7 +134,8 @@ export default function Modal() {
             );
           })}
           <p>
-            Mileage: <span>{mileage}</span>{' '}
+            Mileage:{' '}
+            <span> {`${strMileage[0]},${strMileage.substring(1)}`}</span>{' '}
           </p>
           <p>
             Price: <span>{rentalPrice}</span>{' '}

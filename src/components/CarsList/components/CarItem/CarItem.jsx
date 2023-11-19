@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 
-import css from './CatalogItem.module.css';
+import css from './CarItem.module.css';
 import { openModal } from 'redux/modal/modal-actions';
 
 import PropTypes from 'prop-types';
@@ -12,21 +12,25 @@ import { toggleFavorite } from 'redux/cars/cars-actions';
 import { useEffect, useState } from 'react';
 import { selectCars } from 'redux/cars/cars-selector';
 
-export default function CatalogItem({ obj }) {
+export default function CarItem({ obj }) {
   const { favorites } = useSelector(selectCars);
 
-  const {
+  let {
     img,
     model,
     year,
     rentalPrice,
     id,
+    carId,
     address,
     rentalCompany,
     type,
     mileage,
     make,
   } = obj;
+
+  const ID = carId !== undefined ? carId : id;
+  const strMileage = String(mileage);
 
   const dispatch = useDispatch();
   const [isFav, setIsFav] = useState(false);
@@ -35,7 +39,7 @@ export default function CatalogItem({ obj }) {
     const isFav = currentTarget.getAttribute('data-fav') === 'true';
     const id = currentTarget.getAttribute('data-id');
 
-    dispatch(toggleFavorite({ id, isFav: isFav }));
+    dispatch(toggleFavorite({ id, isFav }));
     setIsFav(!isFav);
   };
 
@@ -47,8 +51,8 @@ export default function CatalogItem({ obj }) {
   };
 
   useEffect(() => {
-    setIsFav(favorites.some(({ carId }) => carId === String(id)));
-  }, [favorites, id]);
+    setIsFav(favorites.some(({ carId }) => carId === ID));
+  }, [favorites, ID]);
 
   return (
     <li className={css['container']}>
@@ -58,7 +62,7 @@ export default function CatalogItem({ obj }) {
           className={`${css['fav-button']} ${isFav ? 'active' : ''}`}
           type="button"
           onClick={toggleFavoriteHandler}
-          data-id={id}
+          data-id={ID}
           data-fav={isFav}
         >
           <img src={isFav ? loveActiveSvg : loveSvg} alt="" />
@@ -84,13 +88,13 @@ export default function CatalogItem({ obj }) {
           <span className={css['delimeter']}>|</span>
           {`${model}`}
           <span className={css['delimeter']}>|</span>
-          {`${mileage}`}
+          {`${strMileage[0]},${strMileage.substring(1)}`}
         </p>
       </div>
       <button
         className={css['learn-more']}
         type="button"
-        data-id={id}
+        data-id={ID}
         onClick={openInfoHandler}
       >
         Learn More
@@ -99,6 +103,6 @@ export default function CatalogItem({ obj }) {
   );
 }
 
-CatalogItem.propTypes = {
+CarItem.propTypes = {
   obj: PropTypes.object,
 };

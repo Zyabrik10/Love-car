@@ -116,6 +116,13 @@
 
   width: 100%;
   max-width: 168px;
+
+  transition: background 0.3s ease;
+}
+
+.modal-rent-button:hover,
+.modal-rent-button:focus {
+  background: #0b44cd;
 }
 
 .modal-sec-title {

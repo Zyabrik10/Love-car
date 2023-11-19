@@ -69,4 +69,11 @@
   padding: 12px 10px;
   background: #3470ff;
   color: #fff;
+
+  transition: background 0.3s ease;
+}
+
+.learn-more:hover,
+.learn-more:focus {
+  background: #0b44cd;
 }

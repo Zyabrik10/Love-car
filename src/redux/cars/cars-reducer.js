@@ -20,10 +20,16 @@ const carsSlice = createSlice({
         );
       }
     },
+    [getFavorites.pending](state, { payload }) {
+      state.isLoading = true;
+    },
     [getFavorites.fulfilled](state, { payload }) {
       state.favorites = payload;
+      state.isLoading = false;
     },
-
+    [getFavorites.rejected](state, { payload }) {
+      state.isLoading = false;
+    },
     [getCars.pending](state) {
       state.isLoading = true;
     },

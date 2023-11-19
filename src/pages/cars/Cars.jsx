@@ -10,9 +10,9 @@ import globalCss from 'css/global.module.css';
 
 import css from './Cars.module.css';
 import Modal from 'components/Modal/Modal';
-import CatalogList from 'components/CatalogList/CatalogList';
 
 import { Hourglass } from 'react-loader-spinner';
+import CarList from 'components/CarsList/CarsList';
 
 function Button() {
   const dispatch = useDispatch();
@@ -60,18 +60,20 @@ export default function Cars() {
               }}
             >
               <Hourglass
-  visible={true}
-  height="80"
-  width="80"
-  ariaLabel="hourglass-loading"
-  wrapperStyle={{}}
-  wrapperClass=""
-  colors={['#306cce', '#72a1ed']}
-/>
+                visible={true}
+                height="80"
+                width="80"
+                ariaLabel="hourglass-loading"
+                wrapperStyle={{}}
+                wrapperClass=""
+                colors={['#306cce', '#72a1ed']}
+              />
             </div>
+          ) : cars.length === 0 ? (
+            <p style={{ textAlign: 'center' }}>No cars</p>
           ) : (
             <>
-              <CatalogList cars={cars} />
+              <CarList cars={cars} />
               <Button />
             </>
           )}
