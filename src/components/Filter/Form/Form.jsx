@@ -10,30 +10,30 @@ export default function Form() {
   const [from, setFrom] = useState(0);
   const [to, setTo] = useState(Infinity);
   const [price, setPrice] = useState(Infinity);
-  const [carsBrands] = useState([
-    'Buick',
-    'Volvo',
-    'HUMMER',
-    'Subaru',
-    'Mitsubishi',
-    'Nissan',
-    'Lincoln',
-    'GMC',
-    'Hyundai',
-    'MINI',
-    'Bentley',
-    'Mercedes-Benz',
-    'Aston Martin',
-    'Pontiac',
-    'Lamborghini',
-    'Audi',
-    'BMW',
-    'Chevrolet',
-    'Mercedes-Benz',
-    'Chrysler',
-    'Kia',
-    'Land',
-  ]);
+  // const [carsBrands] = useState([
+  //   'Buick',
+  //   'Volvo',
+  //   'HUMMER',
+  //   'Subaru',
+  //   'Mitsubishi',
+  //   'Nissan',
+  //   'Lincoln',
+  //   'GMC',
+  //   'Hyundai',
+  //   'MINI',
+  //   'Bentley',
+  //   'Mercedes-Benz',
+  //   'Aston Martin',
+  //   'Pontiac',
+  //   'Lamborghini',
+  //   'Audi',
+  //   'BMW',
+  //   'Chevrolet',
+  //   'Mercedes-Benz',
+  //   'Chrysler',
+  //   'Kia',
+  //   'Land',
+  // ]);
 
   const dispatch = useDispatch();
 

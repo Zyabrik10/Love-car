@@ -8,8 +8,10 @@ axios.defaults.baseURL = 'https://6554dbaa63cafc694fe71e2b.mockapi.io';
  */
 export const getCars = createAsyncThunk('cars/getCars', async (_, thunkAPI) => {
   try {
-    const res = await axios.get(`/adverts?page=1&limit=12`);
-    return res.data;
+    const { data: carData } = await axios.get(`/adverts?page=1&limit=12`);
+    const { data: favData } = await axios.get(`/favorites`);
+
+    return { carData, favData };
   } catch (error) {
     return thunkAPI.rejectWithValue(error.message);
   }
@@ -22,7 +24,7 @@ export const getFavorites = createAsyncThunk(
   'cars/getFavorites',
   async (_, thunkAPI) => {
     try {
-      const res = await axios.get(`/favorites?page=1&limit=12`);
+      const res = await axios.get(`/favorites`);
 
       return res.data;
     } catch (error) {
@@ -90,7 +92,6 @@ export const toggleFavorite = createAsyncThunk(
   'cars/toggleFavorite',
   async ({ id, isFav }, thunkAPI) => {
     try {
-      // console.log(isFav);
       if (isFav) {
         const { data } = await axios.get(`/favorites?carId=${id}`);
         const { id: favId } = data[0];
@@ -100,10 +101,11 @@ export const toggleFavorite = createAsyncThunk(
         return { id, isFav };
       }
 
-      const { data } = await axios.get(`/adverts?id=${id}`);
+      const { data } = await axios.get(`/adverts/${id}`);
+
       const { data: favData } = await axios.post(`/favorites`, {
         carId: id,
-        ...data[0],
+        ...data,
       });
 
       return { id, isFav, car: data[0], favId: favData.id };

@@ -1,0 +1,9 @@
+.list {
+  margin-bottom: 100px;
+  justify-content: center;
+}
+
+.list > li {
+  width: 100%;
+  max-width: 281px;
+}

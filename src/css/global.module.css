@@ -9,15 +9,15 @@
   padding: 0 10px;
 }
 
-@media screen and (min-width: 794px) {
+@media screen and (min-width: 764px) {
   .container {
-    max-width: 748px;
+    max-width: 764px;
 
     padding: 0 15px;
   }
 }
 
-@media screen and (min-width: 1480px) {
+@media screen and (min-width: 1440px) {
   .container {
     max-width: 1440px;
     padding: 0 20px;
@@ -44,8 +44,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: var(--flex-items-gap);
-
-  justify-content: center;
 }
 
 .flex-container > * {

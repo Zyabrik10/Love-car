@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import css from './Modal.module.css';
 import { selectModal } from 'redux/modal/modal-selector';
 import { nanoid } from 'nanoid';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { closeModal } from 'redux/modal/modal-reducer';
 
 export default function Modal() {
@@ -30,20 +30,35 @@ export default function Modal() {
     rentalConditions,
   } = car;
 
+
+  const closeOnKeyClick = useCallback(({ key }) => {
+    console.log('hell');
+    if (key === 'Escape') {
+      dispatch(closeModal());
+      window.removeEventListener('keydown', closeOnKeyClick);
+    }
+  }, [dispatch]);
+
   const closeOnButtonClick = () => {
     dispatch(closeModal());
+    window.removeEventListener('keydown', closeOnKeyClick);
   };
 
   const closeOnBackgroundClick = ({ target, currentTarget }) => {
-    if (target === currentTarget) dispatch(closeModal());
+    if (target === currentTarget) {
+      dispatch(closeModal());
+      window.removeEventListener('keydown', closeOnKeyClick);
+    }
   };
 
   useEffect(() => {
     if (isOpened) {
       setAddr(address.split(', '));
       setRnCon(rentalConditions.split('\n'));
+      window.addEventListener('keydown', closeOnKeyClick);
     }
-  }, [isOpened, address, rentalConditions]);
+  }, [isOpened, address, rentalConditions, closeOnKeyClick]);
+
 
   return (
     <div
@@ -51,10 +66,7 @@ export default function Modal() {
       onClick={closeOnBackgroundClick}
     >
       <div className={css['modal']}>
-        <div
-          onClick={closeOnButtonClick}
-          className={css['close-button']}
-        ></div>
+        <div onClick={closeOnButtonClick} className={css['close-button']}></div>
         <div className={css['img-box']}>
           <img src={img} alt="" />
         </div>
@@ -86,20 +98,20 @@ export default function Modal() {
         <div className={css['modal-acc-func']}>
           <p className={css['car-info']}>
             {accessories?.map((e, index) => {
-                if (index + 1 >= accessories.length) return e;
-                return (
-                  <span key={nanoid()}>
-                    {e}
-                    <span>|</span>
-                  </span>
-                );
-              })}
+              if (index + 1 >= accessories.length) return e;
+              return (
+                <span key={nanoid()}>
+                  {e}
+                  <span>|</span>
+                </span>
+              );
+            })}
           </p>
           <p className={css['car-info']}>
             {functionalities?.map((e, index) => {
-                if (index + 1 >= functionalities.length) return e;
-                return e + ' | ';
-              })}
+              if (index + 1 >= functionalities.length) return e;
+              return e + ' | ';
+            })}
           </p>
         </div>
 
@@ -125,7 +137,9 @@ export default function Modal() {
             Price: <span>{rentalPrice}</span>{' '}
           </p>
         </div>
-        <a href="tel:+380730000000" className={css['modal-rent-button']}>Rental car</a>
+        <a href="tel:+380730000000" className={css['modal-rent-button']}>
+          Rental car
+        </a>
       </div>
     </div>
   );

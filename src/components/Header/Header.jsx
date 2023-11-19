@@ -3,6 +3,16 @@ import { NavLink } from 'react-router-dom';
 import css from './Header.module.css';
 import globalCss from 'css/global.module.css';
 
+import styled from "styled-components";
+
+const StyledLink = styled(NavLink)`
+  color: black;
+
+  &.active {
+    color: #3470ff;
+  }
+`;
+
 export default function Header() {
   return (
     <header className={css['header']}>
@@ -10,13 +20,13 @@ export default function Header() {
         <nav className={css['header-nav']}>
           <ul className={css['header-nav-list']}>
             <li>
-              <NavLink to={'/'}>home</NavLink>
+              <StyledLink to={'/'}>home</StyledLink>
             </li>
             <li>
-              <NavLink to={'/catalog'}>cars</NavLink>
+              <StyledLink to={'/catalog'}>cars</StyledLink>
             </li>
             <li>
-              <NavLink to={'/favorites'}>favorites</NavLink>
+              <StyledLink to={'/favorites'}>favorites</StyledLink>
             </li>
           </ul>
         </nav>
