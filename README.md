@@ -53,5 +53,5 @@ information about each car, and contact the rental company.
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/car-rental-app.git
+   git clone https://github.com/Zyabrik10/test-task
    ```
