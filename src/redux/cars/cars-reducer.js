@@ -45,8 +45,7 @@ const carsSlice = createSlice({
     [addCars.fulfilled](state, { payload }) {
       state.cars.push(...payload);
 
-      if (32 >= state.cars.length || payload.length === state.cars.length)
-        state.isButtonShown = false;
+      if (payload.length < 12) state.isButtonShown = false;
       else state.isButtonShown = true;
     },
     [addCars.rejected](state, action) {
@@ -55,8 +54,7 @@ const carsSlice = createSlice({
     [filterCars.fulfilled](state, { payload }) {
       state.cars = [...payload];
 
-      if (payload.length < 12 || payload.length === state.cars.length)
-        state.isButtonShown = false;
+      if (payload.length < 12) state.isButtonShown = false;
       else state.isButtonShown = true;
     },
     [filterCars.rejected](state, action) {
