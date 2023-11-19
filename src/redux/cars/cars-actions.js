@@ -3,9 +3,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://6554dbaa63cafc694fe71e2b.mockapi.io';
 
-/*
- * GET @ /adverts
- */
 export const getCars = createAsyncThunk('cars/getCars', async (_, thunkAPI) => {
   try {
     const { data: carData } = await axios.get(`/adverts?page=1&limit=12`);
@@ -17,9 +14,6 @@ export const getCars = createAsyncThunk('cars/getCars', async (_, thunkAPI) => {
   }
 });
 
-/*
- * GET @ /favorites
- */
 export const getFavorites = createAsyncThunk(
   'cars/getFavorites',
   async (_, thunkAPI) => {
@@ -33,14 +27,13 @@ export const getFavorites = createAsyncThunk(
   }
 );
 
-/*
- * GET @ /adverts
- */
 export const addCars = createAsyncThunk(
   'cars/addCars',
-  async ({ page, limit = 12 }, thunkAPI) => {
+  async ({ model = '', page = 1, limit = 12 }, thunkAPI) => {
     try {
-      const res = await axios.get(`/adverts?page=${page}&limit=${limit}`);
+      const res = await axios.get(
+        `/adverts?model=${model}&page=${page}&limit=${limit}`
+      );
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -48,9 +41,6 @@ export const addCars = createAsyncThunk(
   }
 );
 
-/*
- * GET @ /adverts/:id
- */
 export const getCar = createAsyncThunk(
   'cars/getCar',
   async (payload, thunkAPI) => {
@@ -63,21 +53,14 @@ export const getCar = createAsyncThunk(
   }
 );
 
-/*
- * GET @ /filterCars
- */
 export const filterCars = createAsyncThunk(
   'cars/filterCars',
-  async ({ model, price, from, to }, thunkAPI) => {
+  async ({ carBrand, page = 1, limit = 12 }, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/adverts?model=${model}`);
+      const { data } = await axios.get(
+        `/adverts?make=${carBrand}&page=${page}&limit=${limit}`
+      );
 
-      if (to === 0) to = Infinity;
-      if (price === 0 && to === 0) price = Infinity;
-
-      // return data.filter(
-      //   ({ miliage, rentalPrice }) => miliage >= from && miliage <= to
-      // );
       return data;
     } catch (e) {
       thunkAPI.rejectWithValue(e.message);
@@ -85,9 +68,6 @@ export const filterCars = createAsyncThunk(
   }
 );
 
-/*
- * GET @ /toggleFavorite
- */
 export const toggleFavorite = createAsyncThunk(
   'cars/toggleFavorite',
   async ({ id, isFav }, thunkAPI) => {

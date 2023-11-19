@@ -53,7 +53,10 @@ const carsSlice = createSlice({
       console.log('rejected');
     },
     [filterCars.fulfilled](state, { payload }) {
-      state.cars = [];
+      if (payload.length < 12) state.isButtonShown = false;
+      else state.isButtonShown = true;
+
+      state.cars = [...payload];
     },
     [filterCars.rejected](state, action) {
       console.log('rejected');

@@ -1,0 +1,23 @@
+.from-to-box {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  max-width: 320px;
+}
+
+.from-to-box .from-input {
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+
+  border-right: 1px solid #8a8a8933;
+
+  padding-left: 65px !important;
+}
+
+.from-to-box .to-input {
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+
+  padding-left: 40px !important;
+}

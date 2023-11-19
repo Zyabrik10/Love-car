@@ -7,9 +7,9 @@ export const openModal = createAsyncThunk(
   'modal/openModal',
   async (id, thunkAPI) => {
     try {
-      const { data } = await axios.get(`/adverts?id=${id}`);
+      const { data } = await axios.get(`/adverts/${id}`);
 
-      return data[0];
+      return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }

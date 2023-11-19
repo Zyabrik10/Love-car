@@ -9,7 +9,6 @@ const modalSlice = createSlice({
   reducers: {
     closeModal(state) {
       state.isOpened = false;
-      // state.car = {};
     },
   },
   extraReducers: {

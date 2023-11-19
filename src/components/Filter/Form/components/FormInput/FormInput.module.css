@@ -1,28 +1,5 @@
-.form {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  flex-wrap: wrap;
-
-  margin: 0 auto;
-  margin-bottom: 50px;
-
-  gap: 40px;
-}
-
-@media screen and (min-width: 800px) {
-  .form {
-    gap: 18px;
-  }
-}
-
 .input-box {
   position: relative;
-
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 
   color: #8a8a89;
   font-size: 14px;
@@ -31,15 +8,37 @@
 }
 
 .input-box input {
-  padding: 14px 18px;
+  padding-top: 14px;
+  padding-bottom: 14px;
+  padding-left: 18px;
+  padding-right: 18px;
+
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
+
+  width: 100%;
 
   border: none;
 
   border-radius: 14px;
   background: #f7f7fb;
+}
+
+.input-box.thereIsSubList input {
+  padding-right: 40px;
+}
+
+.input-box.thereIsTextPlaceholder input {
+  padding-left: 35px;
+}
+
+.label {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  transform: translateY(calc(-100% - 8px));
 }
 
 .input-box input:focus {
@@ -58,31 +57,29 @@
   max-width: 224px;
 }
 
-.input-box.price {
-  width: 100%;
-  max-width: 125px;
-}
-
 .arrow {
   position: absolute;
   top: 50%;
   right: 18px;
-  transform: translateY(10%);
+
+  transform: translateY(-50%);
+
   transition: transform 0.3s ease;
 }
 
 .arrow.active {
-  transform: rotate(180deg) translate(-10%);
+  transform: translateY(-50%) rotate(180deg);
 }
 
-.search-button {
-  border-radius: 12px;
-  background: #3470ff;
+.text-placeholder {
+  position: absolute;
+  top: 50%;
+  left: 18px;
 
-  padding: 14px;
+  transform: translateY(-50%);
 
-  color: #fff;
-
-  width: 100%;
-  max-width: 146px;
+  color: #121417;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.11;
 }
