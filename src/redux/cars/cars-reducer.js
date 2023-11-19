@@ -42,10 +42,10 @@ const carsSlice = createSlice({
       console.log('rejected');
       state.isLoading = false;
     },
-    [addCars.fulfilled](state, action) {
-      state.cars.push(...action.payload);
+    [addCars.fulfilled](state, { payload }) {
+      state.cars.push(...payload);
 
-      if (32 >= state.cars.length || action.payload.length <= 12)
+      if (32 >= state.cars.length || payload.length === state.cars.length)
         state.isButtonShown = false;
       else state.isButtonShown = true;
     },
@@ -53,10 +53,11 @@ const carsSlice = createSlice({
       console.log('rejected');
     },
     [filterCars.fulfilled](state, { payload }) {
-      if (payload.length < 12) state.isButtonShown = false;
-      else state.isButtonShown = true;
-
       state.cars = [...payload];
+
+      if (payload.length < 12 || payload.length === state.cars.length)
+        state.isButtonShown = false;
+      else state.isButtonShown = true;
     },
     [filterCars.rejected](state, action) {
       console.log('rejected');

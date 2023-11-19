@@ -13,16 +13,19 @@ import Modal from 'components/Modal/Modal';
 
 import { Hourglass } from 'react-loader-spinner';
 import CarList from 'components/CarsList/CarsList';
+import { selectFilters } from 'redux/filter/filters-selector';
 
 function Button() {
   const dispatch = useDispatch();
 
   const { isButtonShown } = useSelector(selectCars);
+  const { carBrand } = useSelector(selectFilters);
+
 
   const [page, setPage] = useState(1);
 
   const buttonHandler = () => {
-    dispatch(addCars({ page: page + 1 }));
+    dispatch(addCars({ page: page + 1, carBrand }));
     setPage(page + 1);
   };
 
