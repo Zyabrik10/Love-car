@@ -1,14 +1,14 @@
+@import url('css/variables.css');
+
 .container {
   width: 100%;
   padding: 0 10px;
-  max-width: 1204px;
+  max-width: 1184px;
 }
 
 .load-more {
   margin: 0 auto;
-  color: #3470ff;
-  font-family: Manrope, sans-serif;
-  font-size: 16px;
+  color: var(--main-sub-color);
   font-weight: 500;
   line-height: 1.5;
   text-decoration-line: underline;
@@ -18,5 +18,5 @@
 
 .load-more:hover,
 .load-more:focus {
-  color: #0b44cd;
+  color: var(--main-dark-sub-color);
 }

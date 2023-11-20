@@ -8,6 +8,8 @@ import CarBrandInput from './components/CarBrandInput/CarBrandInput';
 import CarsPricesInput from './components/CarsPricesInput/CarsPricesInput';
 import FromToInputs from './components/FromToInputs/FromToInputs';
 
+import globalCss from 'css/global.module.css';
+
 export default function Form() {
   const { carBrand, price, from, to } = useSelector(selectFilters);
   const dispatch = useDispatch();
@@ -31,7 +33,7 @@ export default function Form() {
       <CarsPricesInput value={price} />
       <FromToInputs fromValue={from} toValue={to} />
       <button
-        className={css['search-button']}
+        className={`${css['search-button']} ${globalCss["global-button"]}`}
         type="submit"
         onClick={buttonHandler}
       >

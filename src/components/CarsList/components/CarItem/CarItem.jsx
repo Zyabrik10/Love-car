@@ -12,6 +12,8 @@ import { toggleFavorite } from 'redux/cars/cars-actions';
 import { useEffect, useState } from 'react';
 import { selectCars } from 'redux/cars/cars-selector';
 
+import globalCss from 'css/global.module.css';
+
 export default function CarItem({ obj }) {
   const { favorites } = useSelector(selectCars);
 
@@ -92,7 +94,7 @@ export default function CarItem({ obj }) {
         </p>
       </div>
       <button
-        className={css['learn-more']}
+        className={`${css['learn-more']} ${globalCss["global-button"]}`}
         type="button"
         data-id={ID}
         onClick={openInfoHandler}

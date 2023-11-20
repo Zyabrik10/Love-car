@@ -5,6 +5,8 @@ import { nanoid } from 'nanoid';
 import { useCallback, useEffect, useState } from 'react';
 import { closeModal } from 'redux/modal/modal-reducer';
 
+import globalCss from 'css/global.module.css';
+
 export default function Modal() {
   const dispatch = useDispatch();
 
@@ -34,7 +36,6 @@ export default function Modal() {
 
   const closeOnKeyClick = useCallback(
     ({ key }) => {
-      console.log('hell');
       if (key === 'Escape') {
         dispatch(closeModal());
         window.removeEventListener('keydown', closeOnKeyClick);
@@ -141,7 +142,7 @@ export default function Modal() {
             Price: <span>{rentalPrice}</span>{' '}
           </p>
         </div>
-        <a href="tel:+380730000000" className={css['modal-rent-button']}>
+        <a href="tel:+380730000000" className={`${css['modal-rent-button']} ${globalCss["global-button"]}`}>
           Rental car
         </a>
       </div>

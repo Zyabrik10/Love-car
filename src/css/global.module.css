@@ -51,3 +51,16 @@
     (100% - (var(--flex-items) - 1) * var(--flex-items-gap)) / var(--flex-items)
   );
 }
+
+.global-button {
+  padding: 12px;
+  border-radius: 12px;
+  background: var(--main-sub-color);
+  color: #fff;
+  transition: background 0.3s ease;
+}
+
+.global-button:hover,
+.global-button:focus {
+  background: var(--main-dark-sub-color);
+}

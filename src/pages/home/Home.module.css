@@ -1,3 +1,5 @@
+@import url('css/variables.css');
+
 .hero {
   background: rgba(200, 200, 200, 0.1);
 }
@@ -44,7 +46,7 @@
 .page-description > li {
   padding: 20px;
   border-radius: 10px;
-  background: #3470ff;
+  background: var(--main-sub-color);
   color: #fff;
 
   display: flex;

@@ -1,3 +1,5 @@
+@import url('css/variables.css');
+
 .modal-wrapper {
   position: fixed;
   top: 0;
@@ -13,8 +15,6 @@
   align-items: center;
 
   padding: 10px;
-
-  overflow-y: auto;
 
   opacity: 0;
   pointer-events: none;
@@ -56,7 +56,7 @@
 
 .img-box {
   width: 100%;
-  height: 248px;
+  height: 180px;
 
   background: rgba(0, 0, 0, 0.1);
   border-radius: 14px;
@@ -65,30 +65,40 @@
   margin-bottom: 14px;
 }
 
+@media screen and (min-width: 500px) {
+  .img-box {
+    height: 248px;
+  }
+}
+
 .img-box > img {
   width: 100%;
   height: 100%;
 }
 
 .car-title {
-  margin-bottom: 8px;
-
-  color: #121417;
-  font-family: Manrope, sans-serif;
-  font-size: 18px;
+  color: var(--main-text-color);
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.33;
+
+  margin-bottom: 6px;
+}
+
+@media screen and (min-width: 500px) {
+  .car-title {
+    font-size: 18px;
+  }
 }
 
 .car-title > span {
-  color: #3470ff;
+  color: var(--main-sub-color);
 }
 
 .car-info-box {
   margin-bottom: 14px;
 
   color: rgba(18, 20, 23, 0.5);
-  font-family: Manrope, sans-serif;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -100,8 +110,14 @@
 }
 
 .car-description {
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.42;
+}
+
+@media screen and (min-width: 500px) {
+  .car-description {
+    font-size: 14px;
+  }
 }
 
 .modal-rent-button {
@@ -109,20 +125,8 @@
   justify-content: center;
   align-items: center;
 
-  padding: 12px;
-  color: #fff;
-  border-radius: 12px;
-  background: #3470ff;
-
   width: 100%;
   max-width: 168px;
-
-  transition: background 0.3s ease;
-}
-
-.modal-rent-button:hover,
-.modal-rent-button:focus {
-  background: #0b44cd;
 }
 
 .modal-sec-title {
@@ -170,5 +174,5 @@
 
 .rental-cond-box > p > span {
   font-weight: 600;
-  color: #3470ff;
+  color: var(--main-sub-color);
 }

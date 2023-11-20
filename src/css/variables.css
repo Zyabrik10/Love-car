@@ -2,4 +2,10 @@
   /* Flex */
   --flex-items: 4;
   --flex-items-gap: 20px;
+
+  --main-sub-color: #3470ff;
+  --main-dark-sub-color: #0b44cd;
+
+  --main-text-color: #121417;
+  --main-text-color-50: #12141780;
 }

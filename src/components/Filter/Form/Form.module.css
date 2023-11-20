@@ -1,3 +1,5 @@
+@import url('css/variables.css');
+
 .form {
   display: flex;
   justify-content: center;
@@ -43,11 +45,11 @@
 }
 
 .input-box input:focus {
-  outline: 2px solid #3470ff;
+  outline: 2px solid var(--main-sub-color);
 }
 
 .input-box input::placeholder {
-  color: #121417;
+  color: var(--main-text-color);
   font-size: 18px;
   font-weight: 500;
   line-height: 1.11;
@@ -76,13 +78,7 @@
 }
 
 .search-button {
-  border-radius: 12px;
-  background: #3470ff;
-
   padding: 14px;
-
-  color: #fff;
-
   width: 100%;
   max-width: 146px;
 }

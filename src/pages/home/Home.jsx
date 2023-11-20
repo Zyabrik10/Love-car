@@ -31,7 +31,7 @@ export default function Home() {
               </p>
             </li>
             <li>
-              <h2>Car Catalog</h2>
+              <h2>Cars Catalog</h2>
               <p>
                 The catalog page allows for a detailed overview of our car
                 fleet. Use filters by brand, hourly rental price, and mileage to

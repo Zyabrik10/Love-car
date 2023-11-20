@@ -7,7 +7,6 @@ import css from './CarsList.module.css';
 import PropTypes from 'prop-types';
 
 export default function CarList({ cars }) {
-  // console.log(cars);
   return (
     <ul className={`${globalCss['flex-container']} ${css['list']}`}>
       {cars.length !== 0 &&
