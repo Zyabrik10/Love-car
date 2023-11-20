@@ -8,7 +8,7 @@ import { setFilter } from 'redux/filter/filters-reducer';
 
 import PropTypes from 'prop-types';
 
-export default function FormInput ({
+export default function FormInput({
   label,
   value,
   placeholder,
@@ -47,7 +47,13 @@ export default function FormInput ({
 
   function inputHandler({ target }) {
     const name = target.getAttribute('name');
-    const value = target.value;
+    let value = target.value;
+
+    if (name === 'price' || name === 'from' || name === 'to') {
+      if (String(value).length === 0) value = 0;
+      else if (!value[value.length - 1].match(/\d/))
+        value = value.substring(0, value.length - 1);
+    }
 
     dispatch(setFilter({ name, value }));
   }
@@ -94,14 +100,14 @@ export default function FormInput ({
       ) : null}
     </label>
   );
-};
+}
 
 FormInput.propTypes = {
   label: PropTypes.string,
   classesBox: PropTypes.array,
   classesInput: PropTypes.array,
   name: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   placeholder: PropTypes.string,
   autocomplete: PropTypes.bool,
   list: PropTypes.array,

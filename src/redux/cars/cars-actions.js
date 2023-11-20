@@ -55,13 +55,33 @@ export const getCar = createAsyncThunk(
 
 export const filterCars = createAsyncThunk(
   'cars/filterCars',
-  async ({ carBrand, page = 1, limit = 12 }, thunkAPI) => {
+  async ({ carBrand, price, from, to, page = 1, limit = 12 }, thunkAPI) => {
     try {
       const { data } = await axios.get(
         `/adverts?make=${carBrand}&page=${page}&limit=${limit}`
       );
 
-      return data;
+      if (carBrand === '' && price === 0 && from === 0 && to === 0) return data;
+
+      let filteredData = [...data];
+
+      if (price !== 0) {
+        filteredData = filteredData.filter(({ rentalPrice }) => {
+          let isRel = Number(rentalPrice.split('$')[1]) <= price;
+
+          return isRel;
+        });
+      }
+
+      if (to !== 0 && from <= to) {
+        filteredData = filteredData.filter(({ mileage }) => {
+          let isMileage = Number(mileage) >= from && Number(mileage) <= to;
+
+          return isMileage;
+        });
+      }
+
+      return filteredData;
     } catch (e) {
       thunkAPI.rejectWithValue(e.message);
     }

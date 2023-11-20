@@ -19,9 +19,9 @@ export default function Form() {
 
     const filterObject = {
       carBrand,
-      price,
-      from,
-      to,
+      price: Number.parseInt(price),
+      from: Number.parseInt(from),
+      to: Number.parseInt(to),
     };
 
     dispatch(filterCars(filterObject));

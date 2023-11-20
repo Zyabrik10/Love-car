@@ -11,26 +11,25 @@ export default function FromToInputs({ fromValue, toValue }) {
         label="Сar mileage / km"
         name="from"
         value={fromValue}
-        classesInput={[css["from-input"]]}
+        classesInput={[css['from-input']]}
         isThereTextPlaceHolder={true}
-        placeholder=''
-        textPlaceHolder='From'
+        placeholder=""
+        textPlaceHolder="From"
       />
       <FormInput
         label=""
         name="to"
         value={toValue}
-        classesInput={[css["to-input"]]}
+        classesInput={[css['to-input']]}
         isThereTextPlaceHolder={true}
-        placeholder=''
-        textPlaceHolder='To'
+        placeholder=""
+        textPlaceHolder="To"
       />
     </div>
   );
 }
 
-
 FromToInputs.propTypes = {
-  fromValue: PropTypes.string,
-  toValue: PropTypes.string,
+  fromValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  toValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
