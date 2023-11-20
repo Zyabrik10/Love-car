@@ -34,5 +34,5 @@ export default function CarsPricesInput({ value }) {
 }
 
 CarsPricesInput.propTypes = {
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
