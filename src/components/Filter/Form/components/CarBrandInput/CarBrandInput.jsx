@@ -1,7 +1,9 @@
 import { useState } from 'react';
-import { FormInput } from '../FormInput/FormInput';
+import FormInput from '../FormInput/FormInput';
 
 import css from './CarBrandInput.module.css';
+
+import PropTypes from 'prop-types';
 
 export default function CarBrandInput({ value }) {
   const [carsBrands] = useState([
@@ -41,3 +43,7 @@ export default function CarBrandInput({ value }) {
     />
   );
 }
+
+CarBrandInput.propTypes = {
+  value: PropTypes.string,
+};

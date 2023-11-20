@@ -6,7 +6,6 @@ import { useDispatch } from 'react-redux';
 
 import { setFilter } from 'redux/filter/filters-reducer';
 
-
 export default function InputSublist({ list, isSubmenuOpened, name }) {
   const dispatch = useDispatch();
 
@@ -34,4 +33,5 @@ export default function InputSublist({ list, isSubmenuOpened, name }) {
 InputSublist.propTypes = {
   list: PropTypes.array,
   isSubmenuOpened: PropTypes.bool,
+  name: PropTypes.string,
 };

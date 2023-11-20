@@ -1,0 +1,19 @@
+.header-nav {
+  margin: 0 auto;
+}
+
+.header-nav-list {
+  display: flex;
+}
+
+.header-nav-list > li > a {
+  display: block;
+  padding: 20px;
+  text-transform: capitalize;
+
+  transition: background 0.3s ease;
+}
+
+.header-nav-list > li > a:hover {
+  background: rgba(100, 100, 100, 0.1);
+}

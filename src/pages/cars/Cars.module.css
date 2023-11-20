@@ -5,18 +5,3 @@
   padding: 0 10px;
   max-width: 1184px;
 }
-
-.load-more {
-  margin: 0 auto;
-  color: var(--main-sub-color);
-  font-weight: 500;
-  line-height: 1.5;
-  text-decoration-line: underline;
-
-  transition: color 0.3s ease;
-}
-
-.load-more:hover,
-.load-more:focus {
-  color: var(--main-dark-sub-color);
-}

@@ -1,8 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { selectCars } from 'redux/cars/cars-selector';
-import { addCars, getCars } from 'redux/cars/cars-actions';
+import { getCars } from 'redux/cars/cars-actions';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import Filter from 'components/Filter/Filter';
 
@@ -13,32 +13,8 @@ import Modal from 'components/Modal/Modal';
 
 import { Hourglass } from 'react-loader-spinner';
 import CarList from 'components/CarsList/CarsList';
-import { selectFilters } from 'redux/filter/filters-selector';
 
-function Button() {
-  const dispatch = useDispatch();
-
-  const { isButtonShown } = useSelector(selectCars);
-  const { carBrand } = useSelector(selectFilters);
-
-
-  const [page, setPage] = useState(1);
-
-  const buttonHandler = () => {
-    dispatch(addCars({ page: page + 1, carBrand }));
-    setPage(page + 1);
-  };
-
-  return (
-    <>
-      {isButtonShown ? (
-        <button className={css['load-more']} onClick={buttonHandler}>
-          Load more
-        </button>
-      ) : null}
-    </>
-  );
-}
+import Button from './components/Button/Button';
 
 export default function Cars() {
   const dispatch = useDispatch();

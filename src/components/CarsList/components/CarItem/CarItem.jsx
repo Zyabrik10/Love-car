@@ -17,6 +17,9 @@ import globalCss from 'css/global.module.css';
 export default function CarItem({ obj }) {
   const { favorites } = useSelector(selectCars);
 
+  const dispatch = useDispatch();
+  const [isFav, setIsFav] = useState(false);
+
   let {
     img,
     model,
@@ -33,9 +36,7 @@ export default function CarItem({ obj }) {
 
   const ID = carId !== undefined ? carId : id;
   const strMileage = String(mileage);
-
-  const dispatch = useDispatch();
-  const [isFav, setIsFav] = useState(false);
+  const addr = address ? address.split(', ') : ['', ''];
 
   const toggleFavoriteHandler = async ({ currentTarget }) => {
     const isFav = currentTarget.getAttribute('data-fav') === 'true';
@@ -44,8 +45,6 @@ export default function CarItem({ obj }) {
     dispatch(toggleFavorite({ id, isFav }));
     setIsFav(!isFav);
   };
-
-  const addr = address ? address.split(', ') : ['', ''];
 
   const openInfoHandler = async ({ target }) => {
     const id = target.getAttribute('data-id');
@@ -76,7 +75,6 @@ export default function CarItem({ obj }) {
         </p>
         <p>{rentalPrice}</p>
       </div>
-
       <div className={css['info-box']}>
         <p className={css['car-info']}>
           {`${addr[1]}`}

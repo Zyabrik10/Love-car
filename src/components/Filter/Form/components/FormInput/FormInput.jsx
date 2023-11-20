@@ -8,7 +8,7 @@ import { setFilter } from 'redux/filter/filters-reducer';
 
 import PropTypes from 'prop-types';
 
-export const FormInput = ({
+export default function FormInput ({
   label,
   value,
   placeholder,
@@ -20,7 +20,7 @@ export const FormInput = ({
   list = [],
   isThereTextPlaceHolder = false,
   textPlaceHolder = '',
-}) => {
+}) {
   const dispatch = useDispatch();
 
   const [isSubmenuOpened, setIsSubmenuOpened] = useState(false);
@@ -106,4 +106,6 @@ FormInput.propTypes = {
   autocomplete: PropTypes.bool,
   list: PropTypes.array,
   isThereSublist: PropTypes.bool,
+  isThereTextPlaceHolder: PropTypes.bool,
+  textPlaceHolder: PropTypes.string,
 };

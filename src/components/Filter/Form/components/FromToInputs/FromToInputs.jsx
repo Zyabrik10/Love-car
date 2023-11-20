@@ -1,6 +1,8 @@
-import { FormInput } from '../FormInput/FormInput';
+import FormInput from '../FormInput/FormInput';
 
 import css from './FromToInputs.module.css';
+
+import PropTypes from 'prop-types';
 
 export default function FromToInputs({ fromValue, toValue }) {
   return (
@@ -26,3 +28,9 @@ export default function FromToInputs({ fromValue, toValue }) {
     </div>
   );
 }
+
+
+FromToInputs.propTypes = {
+  fromValue: PropTypes.string,
+  toValue: PropTypes.string,
+};
