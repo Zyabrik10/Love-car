@@ -3,6 +3,8 @@ import FormInput  from '../FormInput/FormInput';
 
 import css from './CarsPricesInput.module.css';
 
+import PropTypes from 'prop-types';
+
 export default function CarsPricesInput({ value }) {
   const [carsPrices, setCarsPrices] = useState([]);
 
@@ -30,3 +32,7 @@ export default function CarsPricesInput({ value }) {
     />
   );
 }
+
+CarsPricesInput.propTypes = {
+  value: PropTypes.string,
+};
