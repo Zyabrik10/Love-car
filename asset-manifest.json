@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/test-task/static/css/main.ef7218ce.css",
-    "main.js": "/test-task/static/js/main.87bd078a.js",
-    "index.html": "/test-task/index.html",
-    "static/media/love.svg": "/test-task/static/media/love.e6aef420dab2877eaa3255f37619c5e3.svg",
-    "static/media/love_active.svg": "/test-task/static/media/love_active.b825442535eb48fa4c59b66934982764.svg",
-    "static/media/close.svg": "/test-task/static/media/close.f3cbdd58dc25ca7cbb3d.svg",
-    "static/media/arrow-up.svg": "/test-task/static/media/arrow-up.6155ebb1460286357e7bbfff67169dca.svg",
-    "main.ef7218ce.css.map": "/test-task/static/css/main.ef7218ce.css.map",
-    "main.87bd078a.js.map": "/test-task/static/js/main.87bd078a.js.map"
+    "main.css": "/Love-car/static/css/main.119c5b76.css",
+    "main.js": "/Love-car/static/js/main.475f9db7.js",
+    "index.html": "/Love-car/index.html",
+    "static/media/love.svg": "/Love-car/static/media/love.e6aef420dab2877eaa3255f37619c5e3.svg",
+    "static/media/love_active.svg": "/Love-car/static/media/love_active.b825442535eb48fa4c59b66934982764.svg",
+    "static/media/close.svg": "/Love-car/static/media/close.f3cbdd58dc25ca7cbb3d.svg",
+    "static/media/arrow-up.svg": "/Love-car/static/media/arrow-up.6155ebb1460286357e7bbfff67169dca.svg",
+    "main.119c5b76.css.map": "/Love-car/static/css/main.119c5b76.css.map",
+    "main.475f9db7.js.map": "/Love-car/static/js/main.475f9db7.js.map"
   },
   "entrypoints": [
-    "static/css/main.ef7218ce.css",
-    "static/js/main.87bd078a.js"
+    "static/css/main.119c5b76.css",
+    "static/js/main.475f9db7.js"
   ]
 }
